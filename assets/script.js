@@ -1,4 +1,3 @@
-var body = document.querySelectorAll("body");
 
 // var h1 = document.createElement("h1");
 // h1.textContent = "Hello World";
@@ -22,4 +21,73 @@ var body = document.querySelectorAll("body");
 
 // When you get your score you input your name and submit it, the screen then changes to the highscores page where you can see your score.
 
+var body = document.querySelectorAll("body");
+var mainSection = document.getElementById("main-section");
+var initialInfo = document.getElementById("initial-info");
+var submitScore = document.getElementById("submit-score");
+var timer = document.getElementById("timer");
+var startQuizBtn = document.getElementById("start-quiz");
+var answerButtons = document.getElementById("answers");
+var quizPart = document.getElementById("quiz-part");
+var startScreen = document.getElementById("starting-screen");
+var questionArea = document.getElementById("question-area");
+var button1 = document.getElementById("button1"); 
+var button2 = document.getElementById("button2"); 
+var button3 = document.getElementById("button3"); 
+var button4 = document.getElementById("button4"); 
+var userScore = document.getElementById("user-score");
 
+var interval;
+var questionIndex = -1;
+var secondsLeft = 75;  
+
+    function startTimer() {
+    
+    interval = setInterval(function(){
+        secondsLeft--;
+        timer.textContent = secondsLeft;
+        if (secondsLeft === 0){
+            clearInterval(interval);
+        }
+    }, 1000);
+    };
+
+    function startQuiz(){
+        startScreen.classList.add("d-none");
+        quizPart.classList.remove("d-none");
+        startTimer();
+        nextQuestion();
+    }
+    
+    function nextQuestion(){
+        questionIndex++;
+        // The question
+        questionArea.textContent = questions[questionIndex].information;
+        // The correct answer choice
+        var answer = questions[questionIndex].answer
+        // Answer Buttons
+        button1.textContent = questions[questionIndex].options[0];
+        button2.textContent = questions[questionIndex].options[1];
+        button3.textContent = questions[questionIndex].options[2];
+        button4.textContent = questions[questionIndex].options[3]; 
+        
+        if (questionIndex >= 5){
+            quizPart.classList.add("d-none");
+            submitScore.classList.remove("d-none");
+            clearInterval(interval);
+            userScore.textContent = "You scored: " + secondsLeft + "!";
+            return;
+        } 
+    };
+
+
+    
+
+
+
+answerButtons.addEventListener("click", nextQuestion);
+
+
+
+// startQuizBtn.addEventListener("click", startTimer);
+startQuizBtn.addEventListener("click", startQuiz);

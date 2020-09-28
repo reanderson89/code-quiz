@@ -1,41 +1,83 @@
 <!DOCTYPE html>
-<html lang="en-US"> 
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title></title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="assets/reset.css">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-        <link rel="stylesheet" href="assets/style.css">
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title></title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="assets/reset.css" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="assets/style.css" />
+  </head>
+  <body>
+    <header class="p-3">
+        <a href="highscores.html">View High Scores</a>
+        <span id="timer" class="float-right mr-2">Time: 75</span>
+    </header>
 
-    </head>
-    <body>
+    <div class="container mt-5" id="starting-screen">
+      <div class="row justify-content-center mt-5 pt-3 pb-3">
+        <div class="col-10 col-lg-8" id="main-section">
+            <h1>Coding Quiz</h1>
+            <p id="initial-info">Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score/time by ten seconds!</p>
+            <div class="btn-group-vertical" id="answer-buttons">
+                <button type="button" class="btn btn-primary btn-lg" id="start-quiz">Start Quiz</button>
+              </div>
+        </div>
+      </div>
+    </div>
 
-        <div class="container">
-            <div class="row">
-               <div class="col-md-6 align-self-end">
-                   <p>
-                   This will be on the left.
-                    </p>
-                </div>
-                <div class="col-md-6 align-self-start">
-                    <p>
-                    This will be on the Right.
-                     </p>
-                 </div>
+    <div class="container mt-5 d-none" id="quiz-part">
+        <div class="row justify-content-center mt-5 pt-3 pb-3">
+            <div class="col-10 col-lg-8" id="QA-block">
+                <h3 id="question-area" class="mb-4">QUESTION</h3>
+                <div class="btn-group-vertical" id="answers">
+                    <button type="button" class="btn btn-primary btn-sm m-1"id="button1">Small button</button>
+                    <button type="button" class="btn btn-primary btn-sm m-1"id="button2">Small button</button>
+                    <button type="button" class="btn btn-primary btn-sm m-1"id="button3">Small button</button>
+                    <button type="button" class="btn btn-primary btn-sm m-1"id="button4">Small button</button>
+                  </div>
+                <p class="feedback"></p>
             </div>
         </div>
+    </div>
 
-        
-    
-         
+    <div class="container mt-5 d-none" id="submit-score">
+      <div class="row justify-content-center mt-5 pt-3 pb-3">
+          <div class="col-10 col-lg-8">
+              <h2>All Done!</h2>
+              <p id="user-score"></p>
+              <form class="form-group">
+                  <label for="new-score">Enter your name: </label>
+                  <input type="text" id="userName"> 
+                  <button type="button" class="btn btn-info btn-sm submitBtn">Submit</button>
+              </form>
+          </div>
+      </div>
+  </div>
 
-            
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-        <script src="assets/script.js"></script>
-    </body>
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+      integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+      integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+      crossorigin="anonymous"
+    ></script>
+    <script src="assets/script.js"></script>
+    <script src="assets/questions.js"></script>
+  </body>
 </html>
