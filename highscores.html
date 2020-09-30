@@ -13,23 +13,36 @@
       integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="assets/style.css" />
   </head>
   <body>
     <header class="p-3">
       <a target="_blank" href="https://www.w3schools.com">Need to study?</a>
       <span id="timer" class="float-right mr-2">Keep up the good work!</span>
-  </header>
-    
+    </header>
+
     <div class="container mt-5">
       <div class="row justify-content-center mt-5 pt-3 pb-3">
         <div class="col-10 col-lg-8 main-section text-center mt-5 pt-3 pb-3">
-            <h1 class="text-center" id="highscores">Highscores</h1>
-            <h5 class="placeholder-text" id="no-scores"> No Scores Yet!</h5>
-            <div id="scores-list"></div>
-            <div class="text-center">
-            <button type="button" class="btn btn-primary btn-lg mr-5" id="take-again" onclick="document.location='index.html'">Take Again</button>
-            <button type="button" class="btn btn-primary btn-lg ml-5" id="clear-scores" onclick="clearContent(this)">Clear Scores</button>
+          <h1 class="text-center" id="highscores">Highscores</h1>
+          <h5 class="placeholder-text" id="no-scores">No Scores Yet!</h5>
+          <div id="scores-list"></div>
+          <div class="text-center">
+            <button
+              type="button"
+              class="btn btn-primary btn-lg mr-5"
+              id="take-again"
+              onclick="document.location='index.html'"
+            >
+              Take Again
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary btn-lg ml-5"
+              id="clear-scores"
+              onclick="clearContent(this)"
+            >
+              Clear Scores
+            </button>
           </div>
         </div>
       </div>
@@ -50,6 +63,6 @@
       integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
       crossorigin="anonymous"
     ></script>
-    <script src="./highscores.js"></script>
+    <script src="assets/highscores.js"></script>
   </body>
 </html>
