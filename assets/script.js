@@ -69,7 +69,7 @@ var correctAnswer;
     
     function nextQuestion(){
         
-       console.log(this);
+       
         // The question
         questionArea.textContent = questions[questionIndex].information;
         // The correct answer choice
@@ -92,35 +92,42 @@ var correctAnswer;
     };
 
     function clickAnswer (){
+        questionIndex++;
         if (correctAnswer === this.textContent) {
+            
             nextQuestion();
             right.classList.remove("d-none");
             wrong.classList.add("d-none");
             placeholder.classList.add("d-none");
             
         } else {
+            
             secondsLeft = secondsLeft - 10;
             nextQuestion();
             right.classList.add("d-none");
             wrong.classList.remove("d-none");
             placeholder.classList.add("d-none");
-            // hide feedback class and show as needed to display right or wrong.
-        }
+            
+        };
+        // questionIndex++;
+        
+console.log("questions.length = " + questions.length)
+console.log("questionIndex = "+ questionIndex);
 
-        questionIndex++;
-
-        if (questionIndex === questions.length){
+        if (questionIndex == questions.length-1){
+            
             quizPart.classList.add("d-none");
             submitScore.classList.remove("d-none");
             clearInterval(interval);
             userScore.textContent = "You scored: " + secondsLeft + "!";
             timer.textContent = 0;
+           
             return;
         } 
         // console.log("The Correct Answer is: " + correctAnswer)
         // debugger;
         // console.log(this);
-
+        
     }
     
 
@@ -136,6 +143,7 @@ var correctAnswer;
             window.localStorage.setItem("highscores", JSON.stringify(highscores));
             console.log(highscores);
             window.location.href = "highscores.html";
+            
         }
     }
 

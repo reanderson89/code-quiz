@@ -16,12 +16,21 @@
     <link rel="stylesheet" href="assets/style.css" />
   </head>
   <body>
+    <header class="p-3">
+      <a target="_blank" href="https://www.w3schools.com">Need to study?</a>
+      <span id="timer" class="float-right mr-2">Keep up the good work!</span>
+  </header>
     
-    <div class="container">
-      <div class="row">
-        <div class="col-md main-section">
-            <h1 id="highscores">Highscores</h1>
+    <div class="container mt-5">
+      <div class="row justify-content-center mt-5 pt-3 pb-3">
+        <div class="col-10 col-lg-8 main-section text-center mt-5 pt-3 pb-3">
+            <h1 class="text-center" id="highscores">Highscores</h1>
+            <h5 class="placeholder-text" id="no-scores"> No Scores Yet!</h5>
             <div id="scores-list"></div>
+            <div class="text-center">
+            <button type="button" class="btn btn-primary btn-lg mr-5" id="take-again" onclick="document.location='index.html'">Take Again</button>
+            <button type="button" class="btn btn-primary btn-lg ml-5" id="clear-scores" onclick="clearContent(this)">Clear Scores</button>
+          </div>
         </div>
       </div>
     </div>

@@ -24,9 +24,9 @@ var questions = [
         options: ["JavaScript", "Terminal/Bash", "For Loops", "Console.Log"],
         answer: "Console.Log",
     },
-    // {
-    //     information: "This is being used as a placeholder to fix an issue:",
-    //     options: ["JavaScript", "Terminal/Bash", "For Loops", "Console.Log"],
-    //     answer: "Console.Log",
-    // },
+    {
+        information: "This is being used as a placeholder to fix an issue:",
+        options: ["JavaScript", "Terminal/Bash", "For Loops", "Console.Log"],
+        answer: "Console.Log",
+    },
 ];
