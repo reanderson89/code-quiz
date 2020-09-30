@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title></title>
+    <title>Coding Quiz</title>
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="assets/reset.css" />
@@ -15,11 +15,13 @@
     />
   </head>
   <body>
+    <!-- Header containing link to highscores page and also the timer for the quiz. -->
     <header class="p-3">
       <a href="highscores.html">View High Scores</a>
       <span id="timer" class="float-right mr-2">Time: 75</span>
     </header>
 
+    <!-- Container that displays the starting screen on the page -->
     <div class="container mt-5" id="starting-screen">
       <div class="row justify-content-center mt-5 pt-3 pb-3">
         <div class="col-10 col-lg-8" id="main-section">
@@ -42,6 +44,7 @@
       </div>
     </div>
 
+    <!-- Container that displays the quiz itself, each question is dynamically created through Javascript. -->
     <div class="container mt-5 d-none" id="quiz-part">
       <div class="row justify-content-center mt-5 pt-3 pb-3">
         <div class="col-10 col-lg-8" id="QA-block">
@@ -76,13 +79,12 @@
               Small button
             </button>
           </div>
-          <!-- <p class="d-none" id="right">Your last response was: Correct!</p>
-                <p class="d-none" id="wrong">Your last response was: Incorrect. -10 seconds.</p> -->
           <p class="shown" id="placeholder">Your last response was:</p>
         </div>
       </div>
     </div>
 
+    <!-- Container that displays the submit score page where users can input their initials. -->
     <div class="container mt-5 d-none" id="submit-score">
       <div class="row justify-content-center mt-5 pt-3 pb-3">
         <div class="col-10 col-lg-8">
@@ -103,6 +105,7 @@
       </div>
     </div>
 
+    <!-- Links from bootstrap to make sure the styling is correct for the page -->
     <script
       src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
       integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
@@ -118,6 +121,7 @@
       integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
       crossorigin="anonymous"
     ></script>
+    <!-- Links to the JavaScript written -->
     <script src="assets/questions.js"></script>
     <script src="assets/script.js"></script>
   </body>

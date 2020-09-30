@@ -1,11 +1,7 @@
 // DOM variables
-var body = document.querySelectorAll("body");
-var mainSection = document.getElementById("main-section");
-var initialInfo = document.getElementById("initial-info");
 var submitBtn = document.getElementById("submit-me");
 var timer = document.getElementById("timer");
 var startQuizBtn = document.getElementById("start-quiz");
-var answerButtons = document.getElementById("answers");
 var quizPart = document.getElementById("quiz-part");
 var startScreen = document.getElementById("starting-screen");
 var questionArea = document.getElementById("question-area");
@@ -14,12 +10,9 @@ var button2 = document.getElementById("button2");
 var button3 = document.getElementById("button3");
 var button4 = document.getElementById("button4");
 var userScore = document.getElementById("user-score");
-var right = document.getElementById("right");
-var wrong = document.getElementById("wrong");
 var placeholder = document.getElementById("placeholder");
 var userName = document.getElementById("userName");
 var submitScore = document.getElementById("submit-score");
-var scoresList = document.getElementById("scores-list");
 
 
 var interval;
