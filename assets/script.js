@@ -1,25 +1,4 @@
-// var h1 = document.createElement("h1");
-// h1.textContent = "Hello World";
-// document.body.appendChild(h1);
-
-// main screen has a "start quiz" button with some writing above it.
-
-// The timer in the top right is set to 0 until start quiz is clicked then it is set to 75.
-
-// There is a "View Highscores" button in the top left that when clicked lists out all of the scores. (maybe top 5).
-
-// on click of start quiz the screen changes to a question and the timer begins to countdown from 75 seconds.
-
-// on click of an answer the screen changes again, on the next screen text flashes underneath the answers telling you if you are right or wrong.
-
-// If you are wrong then you lose 15 seconds from your time.
-
-// If you finish the quiz before time runs out then your score is total time remaining.
-
-// if time reaches 0 before you finish all of the questions, your score would be 0. Better luck next time.
-
-// When you get your score you input your name and submit it, the screen then changes to the highscores page where you can see your score.
-
+// DOM variables
 var body = document.querySelectorAll("body");
 var mainSection = document.getElementById("main-section");
 var initialInfo = document.getElementById("initial-info");
@@ -42,17 +21,17 @@ var userName = document.getElementById("userName");
 var submitScore = document.getElementById("submit-score");
 var scoresList = document.getElementById("scores-list");
 
-// var highscores = JSON.parse(window.localStorage.getItem("highscores")) || [];
 
 var interval;
 var questionIndex = 0;
 var secondsLeft = 75;
 var correctAnswer;
 
+// This will start counting the timer down by 1 second. It also dictates what to do when the timer reaches 0.
 function startTimer() {
   interval = setInterval(function () {
     secondsLeft--;
-    timer.textContent = secondsLeft;
+    timer.textContent ="Time: " + secondsLeft;
     if (secondsLeft === 0) {
       quizPart.classList.add("d-none");
       submitScore.classList.remove("d-none");
@@ -65,6 +44,7 @@ function startTimer() {
   }, 1000);
 }
 
+// This switches from the starting page to the quiz, starts the timer and loads up the first question.
 function startQuiz() {
   startScreen.classList.add("d-none");
   quizPart.classList.remove("d-none");
@@ -72,6 +52,7 @@ function startQuiz() {
   nextQuestion();
 }
 
+// This is used to generate the questions from the array they are stored in. It also allows the buttons to see the response it is attached to.
 function nextQuestion() {
   // The question
   questionArea.textContent = questions[questionIndex].information;
@@ -89,6 +70,7 @@ function nextQuestion() {
   button4.onclick = clickAnswer;
 }
 
+// This adds 1 to the questionIndex so that the next question can get generated. Both statements will run the nextQuestion function, they will let you know if you were right or wrong and subtract time as a penalty as needed.
 function clickAnswer() {
   questionIndex++;
   if (correctAnswer === this.textContent) {
@@ -98,22 +80,20 @@ function clickAnswer() {
     secondsLeft = secondsLeft - 10;
     nextQuestion();
     placeholder.textContent = "Your last response was: incorrect. -10 seconds";
-  }
+  };
 
+//   This switches the page from the quiz to the score submission screen. 
   if (questionIndex == questions.length - 1) {
     quizPart.classList.add("d-none");
     submitScore.classList.remove("d-none");
     clearInterval(interval);
     userScore.textContent = "You scored: " + secondsLeft + "!";
     timer.textContent = 0;
-
     return;
-  }
-}
-// console.log("The Correct Answer is: " + correctAnswer)
-// debugger;
-// console.log(this);
+  };
+};
 
+// This allows the users input of their Initials to be saved into local storage. It then switches screen to the highscores page.
 function saveHighscore() {
   event.preventDefault();
   var initials = userName.value;
@@ -128,23 +108,11 @@ function saveHighscore() {
     window.localStorage.setItem("highscores", JSON.stringify(highscores));
     console.log(highscores);
     window.location.href = "highscores.html";
-  }
-}
+  };
+};
 
-// function displayScores(){
-//     var scoresList = document.getElementById("scores-list");
-//     var highscores = JSON.parse(window.localStorage.getItem("highscores")) || [];
-//     for (i = 0; i < highscores.length; i++) {
-//         var p = document.createElement("p");
-//         p.textContent = highscores[i].initial+" "+ highscores[i].score;
-//         scoresList.appendChild(p);
-//     };
-// }
-
-// button2.addEventListener("click", clickAnswer);
-// answerButtons.addEventListener("click", nextQuestion);
-
+// Runs the saveHighscore function when the submit button is clicked on the score submission screen.
 submitBtn.addEventListener("click", saveHighscore);
 
-// startQuizBtn.addEventListener("click", startTimer);
+// Starts the quiz when the user clicks the "Start Quiz" button.
 startQuizBtn.addEventListener("click", startQuiz);

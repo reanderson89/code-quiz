@@ -1,3 +1,4 @@
+// An array of all of the questions, options of answers, and the correct answer.
 var questions = [
   {
     information: "Commonly used data types DO NOT include:",
