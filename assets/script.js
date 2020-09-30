@@ -24,7 +24,7 @@
 var body = document.querySelectorAll("body");
 var mainSection = document.getElementById("main-section");
 var initialInfo = document.getElementById("initial-info");
-var submitScore = document.getElementById("submit-score");
+var submitBtn = document.getElementById("submit-me");
 var timer = document.getElementById("timer");
 var startQuizBtn = document.getElementById("start-quiz");
 var answerButtons = document.getElementById("answers");
@@ -36,11 +36,19 @@ var button2 = document.getElementById("button2");
 var button3 = document.getElementById("button3"); 
 var button4 = document.getElementById("button4"); 
 var userScore = document.getElementById("user-score");
+var right = document.getElementById("right");
+var wrong = document.getElementById("wrong");
+var placeholder = document.getElementById("placeholder");
+var userName = document.getElementById("userName");
+var submitScore = document.getElementById("submit-score")
+var scoresList = document.getElementById("scores-list");
+
+// var highscores = JSON.parse(window.localStorage.getItem("highscores")) || [];
 
 var interval;
-var questionIndex = -1;
+var questionIndex = 0;
 var secondsLeft = 75;  
-
+var correctAnswer;
     function startTimer() {
     
     interval = setInterval(function(){
@@ -60,34 +68,93 @@ var secondsLeft = 75;
     }
     
     function nextQuestion(){
-        questionIndex++;
+        
+       console.log(this);
         // The question
         questionArea.textContent = questions[questionIndex].information;
         // The correct answer choice
-        var answer = questions[questionIndex].answer
+        correctAnswer = questions[questionIndex].answer
+        var allOptions = questions[questionIndex].options
         // Answer Buttons
         button1.textContent = questions[questionIndex].options[0];
+        button1.onclick = clickAnswer;
         button2.textContent = questions[questionIndex].options[1];
-        button3.textContent = questions[questionIndex].options[2];
-        button4.textContent = questions[questionIndex].options[3]; 
+        button2.onclick = clickAnswer;
+        button3.textContent = questions[questionIndex].options[2];button3.onclick = clickAnswer;
+        button4.textContent = questions[questionIndex].options[3];
+        button4.onclick = clickAnswer; 
         
-        if (questionIndex >= 5){
+       
+    //    console.log(button3.textContent);
+    //    console.log(questions[questionIndex].answer);
+        
+     
+    };
+
+    function clickAnswer (){
+        if (correctAnswer === this.textContent) {
+            nextQuestion();
+            right.classList.remove("d-none");
+            wrong.classList.add("d-none");
+            placeholder.classList.add("d-none");
+            
+        } else {
+            secondsLeft = secondsLeft - 10;
+            nextQuestion();
+            right.classList.add("d-none");
+            wrong.classList.remove("d-none");
+            placeholder.classList.add("d-none");
+            // hide feedback class and show as needed to display right or wrong.
+        }
+
+        questionIndex++;
+
+        if (questionIndex === questions.length){
             quizPart.classList.add("d-none");
             submitScore.classList.remove("d-none");
             clearInterval(interval);
             userScore.textContent = "You scored: " + secondsLeft + "!";
+            timer.textContent = 0;
             return;
         } 
-    };
+        // console.log("The Correct Answer is: " + correctAnswer)
+        // debugger;
+        // console.log(this);
 
-
+    }
     
 
+    function saveHighscore(){
+        var initials = userName.value;
+        if ( initials !== "") {
+            var highscores = JSON.parse(window.localStorage.getItem("highscores")) || [];
+            var newScore = {
+                score: secondsLeft,
+                initial: initials,
+            }
+            highscores.push(newScore);
+            window.localStorage.setItem("highscores", JSON.stringify(highscores));
+            console.log(highscores);
+            window.location.href = "highscores.html";
+        }
+    }
+
+    // function displayScores(){
+    //     var scoresList = document.getElementById("scores-list");
+    //     var highscores = JSON.parse(window.localStorage.getItem("highscores")) || [];
+    //     for (i = 0; i < highscores.length; i++) {
+    //         var p = document.createElement("p");
+    //         p.textContent = highscores[i].initial+" "+ highscores[i].score;
+    //         scoresList.appendChild(p);
+    //     };
+    // }
 
 
-answerButtons.addEventListener("click", nextQuestion);
+// button2.addEventListener("click", clickAnswer);
+// answerButtons.addEventListener("click", nextQuestion);
 
-
+submitBtn.addEventListener("click", saveHighscore);
 
 // startQuizBtn.addEventListener("click", startTimer);
 startQuizBtn.addEventListener("click", startQuiz);
+
